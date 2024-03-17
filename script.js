@@ -3,6 +3,8 @@ const focoBt = document.querySelector('.app__card-button--foco');
 const curtoBt = document.querySelector('.app__card-button--curto');
 const longoBt = document.querySelector('.app__card-button--longo');
 const playBt = document.querySelector('#start-pause');
+const iniciarOuPausarBt = document.querySelector('#start-pause span')
+const icoIniciarPausarBt = document.querySelector('#start-pause img');
 const botoes = document.querySelectorAll('.app__card-button');
 const musicaFocoInput = document.querySelector('#alternar-musica');
 
@@ -16,11 +18,12 @@ const txtBanner = document.querySelector('.app__title');
 const imgBanner = document.querySelector('.app__image');
 const displayTempo = document.querySelector('#timer');
 
-const focoTime = 1500;
+const focoTime = 1500
 const descansoCurtoTime = 300;
 const descansoLongoTime = 900;
 
-let tempoDecorridoEmSegundos = 5;
+let tempoDecorrido = focoTime;
+
 let intervaloId = null;
 
 musica.loop = true;
@@ -34,18 +37,24 @@ musicaFocoInput.addEventListener('change', () => {
 });
 
 focoBt.addEventListener('click', ()=>{
+    tempoDecorrido = focoTime;
     alterarContexto('foco');
     focoBt.classList.add('active');
+    mostrarTempo();
 });
 
 curtoBt.addEventListener('click', ()=>{
+    tempoDecorrido = descansoCurtoTime;
     alterarContexto('descanso-curto');
     curtoBt.classList.add('active');
+    mostrarTempo();
 });
 
 longoBt.addEventListener('click', ()=>{
+    tempoDecorrido = descansoLongoTime;
     alterarContexto('descanso-longo');
     longoBt.classList.add('active');
+    mostrarTempo();
 });
 
 function alterarContexto(contexto){
@@ -82,15 +91,16 @@ function alterarContexto(contexto){
 }
 
 const contagemRegressiva = () => {
-    if(tempoDecorridoEmSegundos <= 0){
-        zerar();
-        timeoutAudio.play();
+    if(tempoDecorrido <= 0){
+        
+        //timeoutAudio.play();
         alert("tempo finalizado!");
+        zerar();
         return
     }
 
-    tempoDecorridoEmSegundos -= 1;
-    console.log('Temporizador: ' + tempoDecorridoEmSegundos);
+    tempoDecorrido -= 1;
+    mostrarTempo();
 }
 
 playBt.addEventListener('click', iniciarOuPausar);
@@ -103,9 +113,21 @@ function iniciarOuPausar(){
     }
     playAudio.play();
     intervaloId = setInterval(contagemRegressiva, 1000);
+    iniciarOuPausarBt.textContent = "Pausar";
+    icoIniciarPausarBt.setAttribute('src', '/imagens/pause.png');
 }
 
 function zerar(){
     clearInterval(intervaloId);
+    iniciarOuPausarBt.textContent = "Começar";
+    icoIniciarPausarBt.setAttribute('src', '/imagens/play_arrow.png');
     intervaloId = null;
 }
+
+function mostrarTempo(){
+    const tempo = new Date(tempoDecorrido * 1000);
+    const tempoFormatado = tempo.toLocaleString('pr-br', {minute: '2-digit', second: '2-digit'});
+    displayTempo.innerHTML = `${tempoFormatado}`;
+}
+
+mostrarTempo();
