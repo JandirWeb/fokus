@@ -1,9 +1,15 @@
 const btnAddTarefa = document.querySelector('.app__button--add-task');
 const formAddTarefa = document.querySelector('.app__form-add-task');
 const textarea = document.querySelector('.app__form-textarea');
+const btnCancelarTarefa = document.querySelector('.app__form-footer__button--cancel');
 const ulTarefas = document.querySelector('.app__section-task-list');
 
 const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+
+const limparFormulario = () => {
+    textarea.value = '';
+    formAddTarefa.classList.add('hidden');
+}
 
 function atualizarTarefa(){
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
@@ -30,9 +36,12 @@ function criarElementoTarefa(tarefa){
 
     botao.onclick = () => {
         const novaDescricao = prompt("Qual é o novo nome da tarefa?");
-        paragrafo.textContent = novaDescricao;
-        tarefa.descricao = novaDescricao;
-        atualizarTarefa();
+        
+        if(novaDescricao){
+            paragrafo.textContent = novaDescricao;
+            tarefa.descricao = novaDescricao;
+            atualizarTarefa();
+        }
     }
 
     const imgBotao = document.createElement('img');
@@ -73,3 +82,5 @@ tarefas.forEach(tarefa => {
     const elementoTarefa = criarElementoTarefa(tarefa);
     ulTarefas.append(elementoTarefa);
 });
+
+btnCancelarTarefa.addEventListener('click', limparFormulario);
