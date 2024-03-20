@@ -144,6 +144,13 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
+.app__card-primary-button-wrapper.edit-time {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: -40px;
+}
+
 .app__card-primary-button {
     padding: 0.8rem;
     width: 12rem;
@@ -154,6 +161,24 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3.2rem;
     background: var(--linear-botes);
     margin-top: 3.2rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.app__card-primary-button.btn-edit-time {
+    padding: 0.8rem;
+    width: 12rem;
+    color: var(--color-secondary);
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+    border-radius: 3.2rem;
+    background: var(--linear-botes);
+    margin-top: 0rem;
+    margin-bottom: 3.2rem;
     font-size: 1.8rem;
     display: flex;
     align-items: center;
@@ -418,6 +443,32 @@ h1, h2, h3, h4, h5, h6 {
 
 .app__section-task-list-item-complete .app__section-task-icon-status circle {
     fill: #00F4BF;
+}
+
+.overlay-bg{
+    background: rgba(0, 0, 0, 0.9);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+}
+
+.modal-time{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.app__form-edit-time {
+    padding: 1.6rem;
+    border-radius: 0.8rem;
+    background: var(--fundo-card);
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; 
+    font-family: Montserrat;
 }
 
 .app__form-add-task {

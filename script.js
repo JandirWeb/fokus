@@ -7,7 +7,11 @@ const iniciarOuPausarBt = document.querySelector('#start-pause span')
 const icoIniciarPausarBt = document.querySelector('#start-pause img');
 const botoes = document.querySelectorAll('.app__card-button');
 const musicaFocoInput = document.querySelector('#alternar-musica');
-
+const btnEditTime = document.querySelector('.btn-edit-time');
+const modalEditTime = document.querySelector('.overlay-bg');
+const saveTime = document.querySelector('#save-time');
+const cancelTime = document.querySelector('#cancel-time');
+const editNewTime = document.querySelector('.app__form-edit-time input');
 
 const musica = new Audio('/sons/luna-rise-part-one.mp3');
 const playAudio = new Audio('/sons/play.wav');
@@ -18,9 +22,10 @@ const txtBanner = document.querySelector('.app__title');
 const imgBanner = document.querySelector('.app__image');
 const displayTempo = document.querySelector('#timer');
 
-const focoTime = 10;
+let focoTime = 1500;
 const descansoCurtoTime = 300;
 const descansoLongoTime = 900;
+const newTime = null;
 
 let tempoDecorrido = focoTime;
 
@@ -35,6 +40,14 @@ musicaFocoInput.addEventListener('change', () => {
         musica.pause();
     }
 });
+
+btnEditTime.addEventListener('click', () =>{
+    modalEditTime.classList.remove('hidden');
+});
+cancelTime.addEventListener('click', () =>{
+    modalEditTime.classList.remove('hidden');
+})
+
 
 focoBt.addEventListener('click', ()=>{
     tempoDecorrido = focoTime;

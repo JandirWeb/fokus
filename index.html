@@ -49,7 +49,13 @@
                         <button data-contexto="long" class="app__card-button app__card-button--longo">Descanso longo</button>
                     </li>
                 </ul>
+
                 <div id="timer" class="app__card-timer"></div>
+                
+                <div class="app__card-primary-button-wrapper edit-time">
+                    <button class="app__card-primary-button btn-edit-time">Editar tempo</button>
+                </div>
+                
                 <ul class="app__card-list">
                     <li class="app__card-list-item">
                         <label class="toggle">
@@ -133,6 +139,28 @@
                 Projeto fictício e sem fins comerciais. Imagens geradas por IA no Adobe Firefly. 
             </p>
         </footer>
+
+        <div class="overlay-bg hidden">
+            <div class="modal-time">
+                <form class="app__form-edit-time" aria-hidden="true">
+                    <div class="app__form-field">
+                        <label class="app__form-label">
+                            Alterar tempo
+                        </label>
+                        <input type="time" class="app__form-textarea">
+                    </div>
+                    <footer class="app__form-footer">
+                        <div class="splitter"></div>
+                        <button type="button" class="app__form-footer__button app__form-footer__button--cancel" id="cancel-time">
+                            <img src="/imagens/close.png" alt=""> Cancelar
+                        </button>
+                        <button class="app__form-footer__button app__form-footer__button--confirm" id="save-time">
+                            <img src="/imagens/save.png" alt=""> Salvar
+                        </button>
+                    </footer>
+                </form>
+            </div>
+        </div>
     </main>
 
 </body>
