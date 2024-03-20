@@ -18,7 +18,7 @@ const txtBanner = document.querySelector('.app__title');
 const imgBanner = document.querySelector('.app__image');
 const displayTempo = document.querySelector('#timer');
 
-const focoTime = 1500
+const focoTime = 1500;
 const descansoCurtoTime = 300;
 const descansoLongoTime = 900;
 
