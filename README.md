@@ -14,5 +14,8 @@
 - Time Control
 - Audio Control
 - Settimeout with audio and buttons
+- Add/remove tasks (in localSotre)
+- Constrol Task in execution
+
 
 
