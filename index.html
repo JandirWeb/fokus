@@ -147,7 +147,13 @@
                         <label class="app__form-label">
                             Alterar tempo
                         </label>
-                        <input type="time" class="app__form-textarea" step="1">
+
+                        <label for="minutes">Minutos:</label>
+                        <input class="app__form-textarea minutes"  type="number" id="minutes" name="minutes" min="0" max="59" required>
+                        <br>
+                        <label for="seconds">Segundos:</label>
+                        <input class="app__form-textarea seconds"  type="number" id="seconds" name="seconds" min="0" max="59" required>
+                        <br>
                     </div>
                     <footer class="app__form-footer">
                         <div class="splitter"></div>

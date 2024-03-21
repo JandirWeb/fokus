@@ -11,7 +11,8 @@ const btnEditTime = document.querySelector('.btn-edit-time');
 const modalEditTime = document.querySelector('.overlay-bg');
 const saveTime = document.querySelector('#save-time');
 const cancelTime = document.querySelector('#cancel-time');
-const editNewTime = document.querySelector('.app__form-edit-time input');
+const newMinutes = document.querySelector('.minutes');
+const newSeconds = document.querySelector('.seconds');
 
 const musica = new Audio('/sons/luna-rise-part-one.mp3');
 const playAudio = new Audio('/sons/play.wav');
@@ -33,10 +34,7 @@ saveTime.addEventListener('click', (e) => {
     modalEditTime.classList.add('hidden');
 });
 
-let secondFormat = editNewTime.value.split(':');
-let newTime = (+secondFormat[0]) * 60 * 60 + (+secondFormat[1]) * 60 + (+secondFormat[2]);
-
-console.log(newTime);
+let newTime = parseInt(newMinutes.value) * 60 + parseInt(newSeconds.value);
 
 let focoTime = newTime;
 const descansoCurtoTime = 300;
