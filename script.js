@@ -26,23 +26,39 @@ const displayTempo = document.querySelector('#timer');
 btnEditTime.addEventListener('click', () =>{
     modalEditTime.classList.remove('hidden');
 });
-cancelTime.addEventListener('click', () =>{
-    modalEditTime.classList.add('hidden');
-});
-saveTime.addEventListener('click', (e) => {
-    e.preventDefault();
-    modalEditTime.classList.add('hidden');
-});
 
-let newTime = parseInt(newMinutes.value) * 60 + parseInt(newSeconds.value);
+let minutes = 1500;
+let seconds = 0;
+let newTime = minutes + seconds;
 
-let focoTime = newTime;
+let focoTime = 1500;
 const descansoCurtoTime = 300;
 const descansoLongoTime = 900;
 
 var tempoDecorrido = focoTime;
 
+cancelTime.addEventListener('click', () =>{
+    newMinutes.value = '';
+    newSeconds.value = '';
+    minutes = 1500;
+    seconds = 0;
+    mostrarTempo();
+    modalEditTime.classList.add('hidden');
+});
+
+saveTime.addEventListener('click', (e) => {
+    e.preventDefault();
+    minutes = newMinutes.value == '' ? 1500 : parseInt(newMinutes.value) * 60;
+    seconds = newSeconds.value == '' ? 0 : parseInt(newSeconds.value);
+    newTime = minutes + seconds;
+    focoTime = newTime;
+    tempoDecorrido = focoTime;
+    mostrarTempo();
+    modalEditTime.classList.add('hidden');
+});
+
 let intervaloId = null;
+
 
 musica.loop = true;
 
