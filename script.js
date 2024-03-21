@@ -22,12 +22,27 @@ const txtBanner = document.querySelector('.app__title');
 const imgBanner = document.querySelector('.app__image');
 const displayTempo = document.querySelector('#timer');
 
-let focoTime = 1500;
+btnEditTime.addEventListener('click', () =>{
+    modalEditTime.classList.remove('hidden');
+});
+cancelTime.addEventListener('click', () =>{
+    modalEditTime.classList.add('hidden');
+});
+saveTime.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalEditTime.classList.add('hidden');
+});
+
+let secondFormat = editNewTime.value.split(':');
+let newTime = (+secondFormat[0]) * 60 * 60 + (+secondFormat[1]) * 60 + (+secondFormat[2]);
+
+console.log(newTime);
+
+let focoTime = newTime;
 const descansoCurtoTime = 300;
 const descansoLongoTime = 900;
-const newTime = null;
 
-let tempoDecorrido = focoTime;
+var tempoDecorrido = focoTime;
 
 let intervaloId = null;
 
@@ -40,14 +55,6 @@ musicaFocoInput.addEventListener('change', () => {
         musica.pause();
     }
 });
-
-btnEditTime.addEventListener('click', () =>{
-    modalEditTime.classList.remove('hidden');
-});
-cancelTime.addEventListener('click', () =>{
-    modalEditTime.classList.remove('hidden');
-})
-
 
 focoBt.addEventListener('click', ()=>{
     tempoDecorrido = focoTime;
